@@ -52,7 +52,7 @@ if 'extra cheese' in requested_toppings:
     print("Adding extra cheese.")
 print("Finished making your pizza!\n")
 
-# 遍历列表查询特殊元素
+# 遍历列表查询特殊元素(使用多个列表)
 requested_toppings.append('green peppers')
 available_toppings=['mushrooms','olives','green peppers','pepperoni','pineapple','extra cheese']
 for requested_topping in requested_toppings:    # 遍历列表

@@ -4,7 +4,7 @@
 # @File : 元组.py
 # @Software PyCharm
 
-# 列表中的元素是可以修改的，而元组中的元素是不可以修改的，不可修改的列表也称之为元组
+# 列表中的元素是可以修改的，而元组中的元素是不可以修改的(用圆括号)，不可修改的列表(用中括号)也称之为元组
 dimensions=(200,50)
 print(dimensions[0])
 print(dimensions[1])

@@ -11,6 +11,7 @@ alien_0={'color':'green','points':5}
 alien_0['x_position']=0     # 末尾追加键值对
 alien_0['y_position']=25
 print(alien_0)
+print(alien_0['color'])     # 访问指定键名的值
 
 # 修改字典中的值
 alien_0['color']='yellow'
@@ -19,7 +20,7 @@ print(f"The alien is now {alien_0['color']}.\n")    # 这里用f格式输出字�
 
 # 向右移动外星人
 # 根据当前速度确定将外星人向右移动多远
-alien_0['speed']='medium'
+alien_0['speed']='medium'       # 追加键值对
 if alien_0['speed']=='slow':
     x_increment=1
 elif alien_0['speed']=='medium':
@@ -39,10 +40,12 @@ favorite_languages={
     'edward':'rubu',
     'phil':'python',
 }
+language = favorite_languages['sarah'].title()
+print(f"Sarah's favorite language is {language}.")
 
-# 使用get()来访问值
+# 使用get()来访问值(用上面的方式：字典名['键名']来获取不存在的键值回抛异常)
 # 字典以用get方法在指定的键不存在时返回一个默认值，能避免访问不存在的键出现报错
-point_value=alien_0.get('points','No point value assigned.')    # get方法第二个参数是可选的，写了当没找到字典中的键时返回第二个参数，没写就是默认None
+point_value=alien_0.get('points','No point value assigned.\n')    # get方法第二个参数是可选的，写了当没找到字典中的键时返回第二个参数，没写就是默认None
 print(point_value)
 
 # 遍历字典
@@ -51,6 +54,7 @@ user_0={
     'first':'enrico',
     'last':'fermi'
 }
+print(user_0.items())   # dict_items([('username', 'efermi'), ('first', 'enrico'), ('last', 'fermi')])
 for key,value in user_0.items():    # 声明两个变量，用于存储键值对中的键和值。items方法返回一个键值对列表，for循环依次将每个键值对付给指定的两个变量
     print(f"\nKey:{key}")
     print(f"Value:{value}")
@@ -64,23 +68,29 @@ friends=['phil','sarah']    # 创建一个列表
 for name in favorite_languages.keys():  # 遍历列表并把元素逐个赋值给name
     print(f"Hi {name.title()}.")
 
-    if name in friends:         #
-        language=favorite_languages[name].title()   # 首字母大写的方式赋值给language
+    if name in friends:         # 检查当前字符串是否在列表中
+        language=favorite_languages[name].title()   # 首字母大写的方式赋值给language，键存在就直接中括号拿值
         print(f"\t{name.title()}, I see you love {language}!")
 
-if 'erin' not in favorite_languages.keys():     # erin不存在的键
+if 'erin' not in favorite_languages.keys():
+    # erin不存在的键，事实上keys方法返回的是一个了列表，包含字典中的所有键，所以能判断这个字符串在不在列表中
     print("Erin, please take our poll!")
 
-for name in sorted(favorite_languages.keys()):  # 通过sorted方法把字典的keys方法返回的键写入作为参数，能对键进行排序输出
+# 按照特定顺序遍历字典中的所有键
+for name in sorted(favorite_languages.keys()):  # 通过sorted方法把字典的keys方法返回的键写入作为参数，能对键进行先排序后再循环输出
     print(f"{name.title()}, thank you for taking the poll.")
 
 # 遍历字典中的所有值
 print("\nThe following languages have been mentioned:")
-for language in favorite_languages.values():    # 通过values方法来返回一个值列表，不包含键
+for language in favorite_languages.values():    # 通过values方法来返回一个值列表，不包含键，有重复的python
     print(language.title())     # 有两次py
 print('\n')
+languages = {'c++','c#'}    # 可以直接用一对花括号创建集合，直接创建空字典是直接花括号不写内容，创建空集合?......
 for language in set(favorite_languages.values()):   # 通过调用set把字典的values方法返回值写入为参数，能提取出不重复的值
     print(language.title())
+    languages.add(language)
+print(languages)
+
 
 # 字典列表(嵌套，列表中每一个元素就是一个字典)
 aliens=[]   # 创建一个用来存储外星人的空列表
@@ -94,7 +104,7 @@ for alien in aliens[:3]:    # 遍历修改前三个
         alien['speed']='medium'
         alien['points']=10
 
-for alien in aliens[:5]:    # 遍历输出前5个一模一样的外星人
+for alien in aliens[:5]:    # 遍历输出前5个
     print(alien)
 print('...')
 print(f"Total number of aliens:{len(aliens)}")  # len方法显示列表长度

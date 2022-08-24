@@ -4,6 +4,7 @@
 # @File : 变量和简单数据类型.py
 # @Software PyCharm
 
+#py之禅
 import this
 
 # 字符串 引号括起来的都是字符串，可以是单引号，也可以是双引号
@@ -19,16 +20,18 @@ print(name.lower())     # .lower方法能把字符全改成小写
 # """在字符串中使用变量
 first_name='aba'
 last_name='lovelace'
-full_name=f'{first_name} {last_name}'    # 字符串中插入变量的值，可以在引号前加f(format设置格式)，再将要插入的变量放在花括号内，这样py显示字符串时，将把每一个变量都替换为其值
+full_name=f'{first_name} {last_name}'    # 字符串中插入变量的值，可以在引号前加f(format设置格式的简写)，再将要插入的变量放在花括号内，这样py显示字符串时，将把每一个变量都替换为其值
 # print(full_name)    # 引号中间有空格，所以输出时有空格
 print(f"Hello,{full_name.title()}!")    # 套娃
 mesage=f"Hello,{full_name.title()}!"
 print(mesage)
 
-# 在3.7版本之前的要用format方法替代这种方式，
+# 在3.6版本之前的要用format方法替代这种方式，
 full_name="{} {}".format(first_name,last_name)  # 圆括号内列出字符串变量，前面被引用的一个花括号对应一个变量
 
 # """
+
+# 制表符\t添加空白
 
 """删除空白
 language=' python '
@@ -43,8 +46,13 @@ print(language.strip())     # 删除两端的空格
 
 """
 
+# 同时给多个变量赋值
+x,y,z = 0,0,0
+print(x,y,z)
 
-
+# 常量(常量类似于变量，但其值再程序整个生命周期内保持不变。py没有设置常量类型，但是py程序员会用全大写来指出应将某个变量视为常量)
+MAX_CONNECTIONS = 5000
+print(MAX_CONNECTIONS)
 
 
 

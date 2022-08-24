@@ -55,7 +55,7 @@ print(sorted(Cars))     # 用sorted方法只是临时修改列表的顺序，不
 print(sorted(Cars,reverse=True))
 print(Cars)
 
-cars.reverse()  # 反转列表元素，注意是反转列表当前顺序，并没有进行哪种排序
+cars.reverse()  # 反转列表元素，注意是反转列表当前顺序，并没有进行哪种排序(再次调用就可以恢复原顺序)
 print(cars)
 
 len(cars)       # 确认列表长度
