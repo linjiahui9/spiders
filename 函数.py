@@ -74,7 +74,7 @@ def show_completed_models(completed_models,unprinted_designs='None'):
     for unprinted_design in unprinted_designs:
         print(unprinted_design)
 # print_models(unprinted_designs,completed_models)
-print_models(unprinted_designs[:],completed_models)  # 以切片表示法填入实参，实际上传递过去的是列表的副本，pop弹出元素后，并不会改变原来的unprinted_designs中元素个数
+print_models(unprinted_designs[:],completed_models)  # 切片表示法[:]：以切片表示法填入实参，实际上传递过去的是列表的副本，pop弹出元素后，并不会改变原来的unprinted_designs中元素个数
 show_completed_models(completed_models,unprinted_designs)
 
 # 传递任意数量的实参
@@ -87,7 +87,7 @@ make_paizza('pepperoni')
 make_paizza('mushrooms','green pepppers','extra cheese')
 
 # 结合使用位置实参和任意数量实参
-def make_pizza(size, *topping):     # 基于这种情况，py首先将第一个实参给size，然后后面的都是topping这个元组里面了
+def make_pizza(size, *toppings):     # 基于这种情况，py首先将第一个实参给size，然后后面的都是topping这个元组里面了
     print(f"\nMaking a {size}-inch pizza with the following toppings:")
     for topping in toppings:
         print(f"- {topping}")
@@ -104,12 +104,12 @@ def build_profile(first,last,**user_info):      # 两个星号让py创建名为u
 user_profile=build_profile('albert','einstein',location='princeton',field='physics')    # 传入两对键值对
 print(f"\n {user_profile}")
 
-# 导入整个模块(module_name.function_name()导入module_name的文件)
+# 导入整个模块(module_name.function_name()：导入module_name的文件)
 import pizza
 pizza.make_pizza(16,'pepperoni')
 pizza.make_pizza(12,'mushrooms','green peppers','extra cheese')
 
-# 导入特定的函数(from module__name import function_name导入文件中的函数，直接调用就好，效果于上面的方法相同,如果想导入该模块所有函数import后面写*匹配所有就行)
+# 导入特定的函数(from module__name import function_name：导入文件中的函数，直接调用就好，效果于上面的方法相同,如果想导入该模块所有函数import后面写*匹配所有就行)
 from pizza import make_pizza
 make_pizza(16,'pepperoni')
 make_pizza(12,'mushrooms','green pepppers','extra cheese')
