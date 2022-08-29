@@ -28,13 +28,14 @@ for line in lines:              # lines列表中每一个元素对应文件的�
 pi_string=''
 for line in lines:
     pi_string+=line.strip()     # 源文件中第二和第三行左边开始都有两个空格，可以用strip删除空格
-print(f"{pi_string[:22]}")      # 显示qina20位小数点
+print(f"{pi_string[:22]}"+"\n")      # 显示前20位小数点
+print(pi_string)      # 显示完整
 print(len(pi_string))   # 长度包含个位和小数点
 
 # 写入文件
 filename='programming.txt'
-with open(filename,'a') as file_object:     # open可以指定文件的访问模式，w写入，a追加，r+读写，r读取，不写第二个参数默认为r读取，a追加不会覆盖原文件内容，文件不存在时自动创建
-    file_object.write("I love programmming.\n")
+with open(filename,'a') as file_object:     # open可以指定文件的访问模式，w写入，a追加，r+读写，r读取，不写第二个参数默认为r读取。a追加不会覆盖原文件内容，文件不存在时自动创建
+    file_object.write("I love programmming.\n")     # py中只能将字符串写入文本文件，要将数值数据写入要强转str()在写入
     file_object.write("I love creating new games.\n")
 
 
@@ -54,7 +55,7 @@ try:
 except ZeroDivisionError:       # 看上面的运行错误的Traceback能找到能找到匹配的异常对象
     print("You can't divide by zero!")
 
-# 程序崩溃会出现Traceback，这样会让别有用心的人通过这个获取到该文件名称和路径，还能看见部分不正确的代码
+# 程序崩溃会出现Traceback，这样会让别有用心的人通过这个获取到该文件名称和路径，还能看见部分不正确的代码，使用异常处理能避免程序崩溃
 '''
 print("Give me two numbers, and I'll divide them.")
 print("Enter 'q' to quit.")
@@ -83,12 +84,13 @@ def count_words(filenname):
             contents=f.read()
     except FileNotFoundError:
         # print(f"Sorry, the file {filename} does not exist.")
-        pass        # 静默失败，什么都不干，pass可以理解成执行这个模块时只当占位符，什么都不干
-    else:
+        pass        # 静默失败，什么都不干，pass可以理解成执行这个模块时只当占位符，当捕获到异常后不提示，当什么都没发生继续运行(little_women.txt该文件不存在)
+    else:           # else代码块依赖try代码块，把try测试成功的代码放在这里执行
         words=contents.split()      # split()方法以空格为间隔符将字符串拆分成多个部分，并且存储在一个列表中，这样就能获取文章的所有单词数目
         num_words=len(words)
         print(f"The file {filename} has about {num_words} words.")
 
+# 读取多个文件
 filenames=['alice.txt','siddhartha.txt','moby_dick.txt','little_women.txt']
 for filename in filenames:
     count_words(filename)
@@ -106,6 +108,7 @@ with open(filename) as f:
 print(numbers)
 
 # 重构(代码能够正确运行，但是一段代码中还能具体化分出一系列工作的函数，这样细化的过程叫做重构)
+# 重构能让代码逻辑更清晰、更容易理解、更容易扩展
 import json
 def get_stored_username():  # 获取
     filename = 'username.json'

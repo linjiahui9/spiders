@@ -49,14 +49,14 @@ class Battery:      # 类也能作为类内的属性
             range=315
         print(f"This car can go about {range} miles on a full charge.")
 
-# 子类
+# 子类(创建子类时，父类必须包含在当前文件中，且位置在子类前面)
 class ElectricCar(Car):     # 继承填入父类名
     # 子类能有独特于父类的属性和方法
     def __init__(self,make,model,year):     # 不懂回看上面
         super().__init__(make,model,year)   # super是一个特殊的函数,能都调用超类(父类)的方法,这里调用父类的init方法(类似c++一样,派生类要初始化父类的成员,能够调用父类的构造函数)
         self.battery_size=75        # 子类能在继承超类的属性同时，也能创建只属于子类新属性，超类不能访问
 
-        self.battery = Battery(100)  # 在类内创建Battery的实例，并且赋值给ElectricCar的
+        self.battery = Battery(100)  # 在类内创建Battery的实例，并且赋值给ElectricCar的battery属性(该属性类型时类)
 
     def describe_battery(self):
         print(f"This car has a {self.battery_size}-kWh battery.")
