@@ -77,7 +77,7 @@ while True:
 '''
 
 # 处理文件FileNotFoundError异常
-def count_words(filenname):
+def count_words(filename):
     # 计算文件内有多少个单词
     try:
         with open(filename,encoding='utf-8') as f:      # 以只读的方式打开不存在的文件就会报错
