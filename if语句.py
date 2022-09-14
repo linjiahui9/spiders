@@ -4,6 +4,10 @@
 # @File : if语句.py
 # @Software PyCharm
 
+#　平替ｉｆ－ｅｌｓｅ判断
+# text[name] = text.get(name,0)+1
+# text字典存在name值，就加一，不存在就创键赋值为0
+
 # 检查多个条件
 age_0=22
 age_1=18

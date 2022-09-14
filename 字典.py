@@ -146,8 +146,12 @@ for username, user_info in users.items():   # 54行
     print(f"\tWork:{work.title()}")
 
 
+＃ fromkeys(字典名，指定全部键的默认值)
 
-
+dic = {'zhangsan':88,'lisi':92,'wangwu':65}
+sorted(dic.items(),key=lambda e:e[1],reverse=True)  # 按值降序
+sorted(dic.items(),key=lambda e:len(e[0]))      #　按长度升序
+sorted(dic,items(),key=lambda e:e[0]%10)        #　按值的最后一位升序
 
 
 
