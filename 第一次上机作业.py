@@ -51,3 +51,40 @@ while True:
 name_lst.sort()
 print(name_lst)
 # '''
+
+# 寻找这样的两位数，使得将它进行平方后，将产生1个三位数，而这个三位数最右边的两个数字与原来的2位数字相同
+#Squates = [value**2 for value in range(10,101)]
+#for s in Squates:
+#    if str(s).length() == 3:
+#        s = str(s)
+#        if s[0:2] 
+#    else:
+#        continue
+def find_num(n):
+    x = n**2
+    if x>99 and x<1000:
+        last_two = x%100
+        if last_two == n:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+for i in range(10,100):
+    if find_num(i):
+        print(i)
+    
+
+# 回文（palindrome）是正读或者反读都相同的单词或短语，忽略空格和字母大小写。例如，下面的示例都是回文：warts n straw、radar、xyzczyx编写一个程序，判断输入的字符串是否是回文
+while True:
+    word = input("input a word:('q':exit)")
+    if word in ('q','Q'):
+        break
+    else:
+        word = ''.join(word.split())    # 按空格分隔,再连接
+        word = word.lower()
+        if word == word[::-1]:
+            print(f"{word}是回文...")
+        else:
+            print(f"{word}不是回文...")
