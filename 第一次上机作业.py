@@ -88,3 +88,35 @@ while True:
             print(f"{word}是回文...")
         else:
             print(f"{word}不是回文...")
+
+
+# 在一个list中删掉奇数，只保留偶数
+[k+2 for k in [1,2,3,4] if k % 2 == 0]
+list(map(lambda x:x+2, filter(lambda k:k % 2 == 0, [1,2,3,4])))
+
+# 3. 在单词表中查找包含所有元音字母aeiou的单词，并打印出来。
+# 推荐一个单词表：
+# https://github.com/qiwsir/StarterLearningPython/blob/master/newcodes/answers/dictionary.txt，
+# 或者到http://www.math.sjsu.edu/~foster/dictionary.txt下载。
+def count_words(filename,lst):
+    try:
+        with open(filename,encoding='utf-8') as f:
+            contents=f.read()
+    except FileNotFoundError:
+        pass
+    else:
+        words=contents.split()
+        for word in words:
+            if word.lower()[0:1] in lst:
+              print(word)  
+                
+lst = ['a','e','i','o','u']
+count_words("dictionary.txt",lst)
+
+# 4. 编写斐波那契数列函数。
+
+
+# 5. 定义一个由整数组成的列表，其中包含10个元素，分别赋值为1~10， 然后将列表中的元素依次向前移一个位置，即，原来是[1,2,3,4,5,6,7,8,9,10]，变成：[2,3,4,5,6,7,8,9,10,1]，然后输出这个数组
+lst = [value for value in range(1,11)]
+lst.append(lst.pop(0))   
+print(lst) 
