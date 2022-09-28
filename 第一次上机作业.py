@@ -27,15 +27,25 @@ lsts.reverse()
 print(lsts)
 # '''
 
+'''
+lst = range(0,100,5)
+a = list(lst)
+a.sort(reverse=True)
+
+sorted(a,reverse=True)
+
+a[::-1]
+'''
+
 # 定义一个列表，要求列表元素包含字符串、整数、浮点数然后把列表中不是字符串的元素全部删除
 # '''
-lists = ['xxx',100,100.1,100.2,'yyy',101,101.1,'aaa',101.2,'zzz',]
+lists = ['xxx',100,100.1,100.2,'yyy',101,101.1,'aaa',101.2,'zzz']
 print(lists)
 for list in lists[:]:
     if isinstance(list,str):
         pass
     else:
-        lists.remove(list)
+        lists.remove(list)  # 正序pop和remove会出现跳过的情况
 print(lists)
 # '''
 
