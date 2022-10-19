@@ -117,21 +117,46 @@ def test_words(filename, lst):
     except FileNotFoundError:
         pass
     else:
-        words = contents.split()
+        words = contents.split()    # 空格或回车分割返回列表
         for word in words:
             lsts = []
             for char in word:
-                if char.lower() in lst:
+                if char.lower() in lst:     # 遍历拿到单词每一个字母判断是否在内，判断最后是否和传入的列表完整匹配
                     lsts.append(char)
-            if operator.eq(lst,lsts):
+            if operator.eq(lst,lsts):   # eq是==，判断两个对象是否相同，可以是自定义类对象
+                # https://blog.csdn.net/weixin_36670529/article/details/116465808
                 yield word
 
 lst = ['a', 'e', 'i', 'o', 'u']
 words = test_words("第二次上机作业文本2.txt", lst)
+print(type(words))  # <class 'generator'>
 for word in words:
     print(word)
-
 print('\n')
+
+# 或
+def clean_word(word):
+    return word.strip().lower()
+
+def get_vowels_in_word(word):
+    vowel_str = "aeiou"
+    vowels_in_word = ""
+    for char in word:
+        if char in vowel_str:
+            vowels_in_word += char
+    return vowels_in_word
+
+if __name__ == "__main__":
+    data_file = open("dictionary.txt", "r")
+    print("Find words containing vowels 'aeiou' in that order:")
+    for word in data_file:
+        word = clean_word(word)
+        if len(word) <= 6:
+            continue
+        vowel_str = get_vowels_in_word(word)
+        if vowel_str == "aeiou":
+            print(word)
+
 
 # 4. 编写斐波那契数列函数。
 a, b, lsts = 0, 1, []

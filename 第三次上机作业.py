@@ -6,13 +6,13 @@
 
 """
 1. 编写一个程序，提示输入整数X，然后计算从1开始，连续X个整数之和。
-提示：reduce()函数
+提示：reduce(参数1：函数要有两个参数，参数2：可迭代对象，参数3可选：初始参数)函数
 """
 from functools import reduce
 
 X = int(input("输入整数X求1到X之和："))
 lst = [value for value in range(1, X)]
-print(reduce(lambda x, y: x + y, lst))
+print(reduce(lambda x, y: x + y, lst))  # x.y参数和x+y匿名函数具体实现
 
 '''
 2. 已知：已知两个列表：citys = [“suzhou”, “shanghai”, “hangzhou”, “nanjing”]，codes = [“0512”, “021”, “0571”, “025”]
