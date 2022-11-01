@@ -97,7 +97,20 @@ ser.reindex(A, method = 'bfill',fill_value = 0)
 
 
 
+# 5.分别筛选出军事训练为“优秀”、“良好”、“中等”、“及格”和“不及格”的学生成绩记录
+df[df.军事训练.str.contains('优秀')]
+# 6.输出FLASH动画设计平均分(不统计缺考学生)
+df[df.FLASH动画设计.str.contains('缺考')==False].FLASH动画设计.astype(float).mean()
 
+# 7.筛选出平均成绩在80分以上的学生mingz及平均成绩、平均学分绩点
+df[df['\n\n平均\n成绩']>80][['姓名','\n\n平均\n成绩','\n\n平均\n学分\n绩点']]
 
+# 8.将所有学生按照其平均学分绩点及姓名排序
+df.sort_values(by=['\n\n平均\n学分\n绩点','姓名'],ascending=[False,True])
 
+# 9.将所有学生按照其平均成绩进行排名，并输出前10名
+df.rank(ascending=False).sort_values(by='\n\n平均\n成绩')[0:10]
+
+# 10.输出平均成绩在80分数段的学生名字及平均成绩
+df[df['\n\n平均\n成绩'].between(80,89,99)][['姓名','\n\n平均\n成绩']]
 
